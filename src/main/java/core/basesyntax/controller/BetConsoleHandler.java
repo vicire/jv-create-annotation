@@ -5,7 +5,7 @@ import core.basesyntax.dao.BetDaoImpl;
 import core.basesyntax.model.Bet;
 import java.util.Scanner;
 
-public class ConsoleHandler {
+public class BetConsoleHandler {
     private static final String EXIT = "q";
     private static final String DELIMITER = " ";
     private static final int BET_VALUE_INDEX = 0;
@@ -20,18 +20,14 @@ public class ConsoleHandler {
             if (command.equalsIgnoreCase(EXIT)) {
                 return;
             }
-            Bet bet = null;
             try {
                 String[] betData = command.split(DELIMITER);
                 int betValue = Integer.parseInt(betData[BET_VALUE_INDEX]);
                 double coefficient = Double.parseDouble(betData[COEFFICIENT_INDEX]);
-                bet = new Bet(betValue, coefficient);
-            } catch (NumberFormatException e) {
+                betDao.add(new Bet(betValue, coefficient));
+                System.out.println(betDao.getAll());
+            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
                 System.out.println("Введіть будь ласка коректні дані для розрахунку ставки");
-            }
-            betDao.add(bet);
-            if (bet != null) {
-                System.out.println(bet.toString());
             }
         }
     }
