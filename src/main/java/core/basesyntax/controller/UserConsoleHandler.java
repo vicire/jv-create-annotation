@@ -10,11 +10,11 @@ public class UserConsoleHandler {
     private static final String DELIMITER = " ";
     private static final int NAME_VALUE_INDEX = 0;
     private static final int AGE_INDEX = 1;
-    UserDao userDao = new UserDaoImpl();
+    private UserDao userDao = new UserDaoImpl();
 
     public void handle() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введіть ім'я і вік або 'q' для виходу");
+        System.out.println("Enter the name and the age or press 'q' to exit");
         while (true) {
             String command = scanner.nextLine();
             if (command.equalsIgnoreCase(EXIT)) {
@@ -27,7 +27,7 @@ public class UserConsoleHandler {
                 userDao.add(new User(name,age));
                 System.out.println(userDao.getAll());
             } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-                System.out.println("Введіть будь ласка коректні дані");
+                System.out.println("Please, enter the correct information");
             }
         }
     }
