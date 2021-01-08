@@ -25,7 +25,9 @@ public class BetConsoleHandler {
                 int betValue = Integer.parseInt(betData[BET_VALUE_INDEX]);
                 double coefficient = Double.parseDouble(betData[COEFFICIENT_INDEX]);
                 betDao.add(new Bet(betValue, coefficient));
-                System.out.println(betDao.getAll());
+                for (Bet bet: betDao.getAll()) {
+                    System.out.println(bet);
+                }
             } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
                 System.out.println("Please, enter the correct data for bet calculation");
             }

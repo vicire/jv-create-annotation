@@ -25,7 +25,9 @@ public class UserConsoleHandler {
                 String name = userData[NAME_VALUE_INDEX];
                 int age = Integer.parseInt(userData[AGE_INDEX]);
                 userDao.add(new User(name,age));
-                System.out.println(userDao.getAll());
+                for (User user: userDao.getAll()) {
+                    System.out.println(user);
+                }
             } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
                 System.out.println("Please, enter the correct information");
             }
