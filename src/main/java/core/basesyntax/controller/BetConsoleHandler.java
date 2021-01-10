@@ -1,7 +1,7 @@
 package core.basesyntax.controller;
 
 import core.basesyntax.dao.BetDao;
-import core.basesyntax.dao.BetDaoImpl;
+import core.basesyntax.lib.Inject;
 import core.basesyntax.model.Bet;
 import java.util.Scanner;
 
@@ -10,7 +10,9 @@ public class BetConsoleHandler {
     private static final String DELIMITER = " ";
     private static final int BET_VALUE_INDEX = 0;
     private static final int COEFFICIENT_INDEX = 1;
-    private BetDao betDao = new BetDaoImpl();
+
+    @Inject
+    private BetDao betDao;
 
     public void handle() {
         Scanner scanner = new Scanner(System.in);
