@@ -1,7 +1,7 @@
 package core.basesyntax.controller;
 
 import core.basesyntax.dao.UserDao;
-import core.basesyntax.dao.UserDaoImpl;
+import core.basesyntax.lib.Inject;
 import core.basesyntax.model.User;
 import java.util.Scanner;
 
@@ -10,7 +10,9 @@ public class UserConsoleHandler {
     private static final String DELIMITER = " ";
     private static final int NAME_VALUE_INDEX = 0;
     private static final int AGE_INDEX = 1;
-    private UserDao userDao = new UserDaoImpl();
+
+    @Inject
+    private UserDao userDao;
 
     public void handle() {
         Scanner scanner = new Scanner(System.in);
